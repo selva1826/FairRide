@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FairRide - Principal Pitch Presentation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .presentation-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .slide {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            margin: 30px 0;
+            padding: 50px;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #3b82f6, #1e40af);
+        }
+
+        h1 {
+            color: #1e40af;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-align: center;
+            background: linear-gradient(135deg, #3b82f6, #1e40af);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        h2 {
+            color: #1e40af;
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        h3 {
+            color: #3b82f6;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        h4 {
+            color: #1e40af;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: #4b5563;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: #6b7280;
+            text-align: center;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .tagline {
+            font-size: 1.3rem;
+            color: #3b82f6;
+            text-align: center;
+            font-style: italic;
+            margin-bottom: 40px;
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .problem-section {
+            background: #f8fafc;
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 5px solid #3b82f6;
+        }
+
+        .features-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            padding: 25px;
+            border-radius: 15px;
+            border: 2px solid #bfdbfe;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(59, 130, 246, 0.2);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #3b82f6, #1e40af);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .comparison-table th {
+            background: linear-gradient(135deg, #3b82f6, #1e40af);
+            color: white;
+            padding: 20px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .comparison-table td {
+            padding: 20px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, #fef3c7, #fbbf24);
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-weight: 600;
+        }
+
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #3b82f6, #1e40af);
+            z-index: 1;
+        }
+
+        .timeline-item {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 2;
+            min-width: 250px;
+            text-align: center;
+            border: 3px solid #3b82f6;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #3b82f6, #1e40af);
+            color: white;
+            padding: 50px;
+            border-radius: 20px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .cta-button {
+            background: white;
+            color: #1e40af;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+        }
+
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .image-card {
+            text-align: center;
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 15px;
+            border: 2px solid #e5e7eb;
+        }
+
+        .image-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .image-card h4 {
+            color: #1e40af;
+            margin-bottom: 10px;
+        }
+
+        .prototype-showcase {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            margin-top: 30px;
+            border: 3px solid #3b82f6;
+        }
+
+        .prototype-link {
+            display: inline-block;
+            background: linear-gradient(135deg, #3b82f6, #1e40af);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .prototype-link:hover {
+            transform: scale(1.05);
+        }
+
+        .slide-number {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            background: #3b82f6;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .slide {
+                padding: 30px 20px;
+                margin: 20px 10px;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .problem-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .timeline {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .timeline::before {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-container">
+        
+        <!-- Slide 1: Title -->
+        <div class="slide">
+            <div class="slide-number">1/8</div>
+            <img src="pics/FairRideLogo.png" alt="" style="width: 450px; margin: auto;" >
+            <p class="subtitle">The Future of Transportation</p>
+            <p class="tagline">Competitive Bidding Ride-Hailing Platform</p>
+            <p style="text-align: center; font-size: 1.3rem; color: #1e40af; margin-top: 40px;">
+                <strong>Eliminating Price Disputes & Driver Cancellations Through Fair Competition</strong>
+            </p>
+            <div class="cta-section" style="margin-top: 50px;">
+                <h3 style="color: white; margin-bottom: 20px;">Making ride-hailing fair for everyone</h3>
+                <p style="color: #e5e7eb; font-size: 1.1rem;">Revolutionary bidding system that puts power back in the hands of users</p>
+            </div>
+        </div>
+
+        <!-- Slide 2: The Problem -->
+        <div class="slide">
+            <div class="slide-number">2/8</div>
+            <h2>The Problem We're Solving</h2>
+            <h3 style="text-align: center; color: #dc2626; margin-bottom: 40px;">Current Ride-Hailing Challenges</h3>
+            
+            <div class="problem-grid">
+                <div class="problem-section">
+                    <h4>🚫 For Riders:</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin: 15px 0; padding-left: 20px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #dc2626;">•</span>
+                            <strong>Unexpected Price Hikes:</strong> Surge pricing without transparency
+                        </li>
+                        <li style="margin: 15px 0; padding-left: 20px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #dc2626;">•</span>
+                            <strong>Driver Cancellations:</strong> 40% of bookings get cancelled after acceptance
+                        </li>
+                        <li style="margin: 15px 0; padding-left: 20px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #dc2626;">•</span>
+                            <strong>Hidden Charges:</strong> Extra demands for cash payments
+                        </li>
+                        <li style="margin: 15px 0; padding-left: 20px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #dc2626;">•</span>
+                            <strong>Poor Service:</strong> No accountability for driver behavior
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="problem-section">
+                    <h4>🚫 For Drivers:</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin: 15px 0; padding-left: 20px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #dc2626;">•</span>
+                            <strong>Unfair Fixed Pricing:</strong> Can't negotiate based on traffic/distance
+                        </li>
+                        <li style="margin: 15px 0; padding-left: 20px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #dc2626;">•</span>
+                            <strong>Platform Control:</strong> No say in fare determination
+                        </li>
+                        <li style="margin: 15px 0; padding-left: 20px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #dc2626;">•</span>
+                            <strong>Low Earnings:</strong> Fixed rates don't account for fuel costs
+                        </li>
+                        <li style="margin: 15px 0; padding-left: 20px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #dc2626;">•</span>
+                            <strong>Forced Acceptance:</strong> Penalty for rejecting low-profit rides
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div style="background: #fef2f2; padding: 30px; border-radius: 15px; margin-top: 40px; border-left: 5px solid #dc2626;">
+                <h4 style="color: #dc2626;">💔 The Reality:</h4>
+                <div style="display: flex; flex-direction: column; gap: 50px;">
+                <div style="display: flex; gap: 25px;">
+                    <img src="https://www.shutterstock.com/image-photo/caucasian-confused-sad-driver-upset-260nw-2516439521.jpg" alt="" srcset="" style="width: 300px; border-radius: 25px; border: 1px solid black;">
+                    <p style="font-style: italic; color: #7f1d1d; margin-bottom: 10px;">
+                    "As a driver, I lose money on long-distance rides due to fixed pricing"
+                </p>
+
+                </div>
+                <div style="display: flex; gap: 25px;">
+                    <p style="font-style: italic; color: #7f1d1d; margin-bottom: 10px;">
+                    "I booked a ride for ₹150, driver accepted, then called demanding ₹200 or threatened to cancel"
+                </p>
+                    <img src="https://share.redd.it/discover/post/1k5rutr" alt="" srcset="" style="width: 300px; border-radius: 25px; border: 1px solid black;">
+
+
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Our Solution -->
+        <div class="slide">
+            <div class="slide-number">3/8</div>
+            <h2>Our Revolutionary Solution</h2>
+            <h3 style="text-align: center; margin-bottom: 40px;">Competitive Bidding System</h3>
+            
+            <div class="features-list">
+                <div class="feature-card">
+                    <h4>🎯 How It Works:</h4>
+                    <ol style="padding-left: 20px;">
+                        <li style="margin: 10px 0;"><strong>Rider Books:</strong> Sets pickup/destination, ride goes live</li>
+                        <li style="margin: 10px 0;"><strong>Drivers Compete:</strong> 2-minute bidding window with custom pricing</li>
+                        <li style="margin: 10px 0;"><strong>Best Price Wins:</strong> Lowest bidder gets the ride automatically</li>
+                        <li style="margin: 10px 0;"><strong>Transparent Process:</strong> Real-time updates for both parties</li>
+                        <li style="margin: 10px 0;"><strong>Fair Outcome:</strong> Market-driven pricing benefits everyone</li>
+                    </ol>
+                </div>
+                
+                <div class="feature-card">
+                    <h4>🏆 Key Innovation:</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin: 15px 0; padding-left: 25px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #3b82f6;">✓</span>
+                            <strong>Custom Price Input:</strong> Drivers type exact amounts
+                        </li>
+                        <li style="margin: 15px 0; padding-left: 25px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #3b82f6;">✓</span>
+                            <strong>Distance-Based Bidding:</strong> Smart suggestions based on route
+                        </li>
+                        <li style="margin: 15px 0; padding-left: 25px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #3b82f6;">✓</span>
+                            <strong>Live Competition:</strong> Real-time bid tracking
+                        </li>
+                        <li style="margin: 15px 0; padding-left: 25px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #3b82f6;">✓</span>
+                            <strong>Automatic Assignment:</strong> Fastest fair system
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Target Audience -->
+        <div class="slide">
+            <div class="slide-number">4/8</div>
+            <h2>Our Target Audience</h2>
+            <h3 style="text-align: center; margin-bottom: 40px;">Serving Multiple Vehicle Categories</h3>
+            
+            <div class="image-gallery">
+                
+                <div class="image-card">
+                    <img src="https://media.istockphoto.com/id/1284066202/photo/driver-in-uniform-standing-by-his-rickshaw.jpg?s=612x612&w=0&k=20&c=g3jsRvXTA3KBSjOaZcDMUk-DQGeheWQ_piG00SF66rs=" alt="Auto Rickshaw Driver">
+                    <h4>Auto Rickshaw Drivers</h4>
+                    <p>Three-wheeler transportation with fair bidding system for short to medium distance rides.</p>
+                </div>
+                
+                <div class="image-card">
+                    <img src="https://indian-drivers.com/wp-content/uploads/2024/05/Rectangle-13.png" alt="Cab Driver">
+                    <h4>Cab Drivers</h4>
+                    <p>Four-wheeler taxi services with transparent pricing and zero cancellation guarantee.</p>
+                </div>
+                <div class="image-card">
+                    <img src="https://i.pinimg.com/736x/3f/76/69/3f766918e96eaad3423b2fdffcfb31d6.jpg" alt="Tata Ace Booking">
+                    <h4>Tata Ace Drivers</h4>
+                    <p>Commercial goods transportation with competitive pricing for small trucks and pickup vehicles.</p>
+                </div>
+                
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">3</div>
+                    <p style="color: #f0f9ff;">Vehicle Categories</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">100%</div>
+                    <p style="color: #f0f9ff;">Fair Pricing</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">0%</div>
+                    <p style="color: #f0f9ff;">Cancellations</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">2min</div>
+                    <p style="color: #f0f9ff;">Bidding Window</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Technical Excellence -->
+        <div class="slide">
+            <div class="slide-number">5/8</div>
+            <h2>Technical Excellence</h2>
+            <h3 style="text-align: center; margin-bottom: 40px;">Cutting-Edge Technology Stack</h3>
+            
+            <div class="features-list">
+                <div class="feature-card">
+                    <h4>🗺️ Smart Maps Integration:</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin: 10px 0; padding-left: 25px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #10b981;">✓</span>
+                            <strong>Free OpenStreetMap:</strong> No costly Google Maps fees
+                        </li>
+                        <li style="margin: 10px 0; padding-left: 25px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #10b981;">✓</span>
+                            <strong>Real-Time Tracking:</strong> Live driver location updates
+                        </li>
+                        <li style="margin: 10px 0; padding-left: 25px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #10b981;">✓</span>
+                            <strong>Distance Calculator:</strong> Exact km display for bidding
+                        </li>
+                        <li style="margin: 10px 0; padding-left: 25px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #10b981;">✓</span>
+                            <strong>Route Optimization:</strong> Best paths for efficiency
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h4>⚡ Real-Time Features:</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin: 10px 0; padding-left: 25px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #3b82f6;">✓</span>
+                            <strong>Live Bidding:</strong> Instant updates during 2-minute window
+                        </li>
+                        <li style="margin: 10px 0; padding-left: 25px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #3b82f6;">✓</span>
+                            <strong>Driver Tracking:</strong> "Driver is 2.3 km away"
+                        </li>
+                        <li style="margin: 10px 0; padding-left: 25px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #3b82f6;">✓</span>
+                            <strong>Socket.io Integration:</strong> Sub-second communication
+                        </li>
+                        <li style="margin: 10px 0; padding-left: 25px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #3b82f6;">✓</span>
+                            <strong>Mobile-First Design:</strong> Optimized for smartphones
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="prototype-showcase">
+                <h3>🎨 Live Prototype</h3>
+                <p style="font-size: 1.2rem; margin-bottom: 20px;">Experience our working prototype with full functionality</p>
+                <a href="https://silly-tulumba-c26579.netlify.app/" target="_blank" class="prototype-link">
+                    View Live Demo →
+                </a>
+                <p style="margin-top: 20px; color: #6b7280;">Modern, clean interface inspired by industry leaders with enhanced bidding features</p>
+            </div>
+        </div>
+
+        <!-- Slide 6: Competitive Advantages -->
+        <div class="slide">
+            <div class="slide-number">6/8</div>
+            <h2>Competitive Advantages</h2>
+            <h3 style="text-align: center; margin-bottom: 40px;">Why We'll Dominate the Market</h3>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Traditional Apps</th>
+                        <th style="background: linear-gradient(135deg, #10b981, #059669);">FairRide</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Pricing Model</strong></td>
+                        <td>Fixed/Surge Pricing</td>
+                        <td><span class="highlight">Competitive Bidding</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cancellation Rate</strong></td>
+                        <td>High (30-40%)</td>
+                        <td><span class="highlight">Virtually Zero</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Price Disputes</strong></td>
+                        <td>Very Common</td>
+                        <td><span class="highlight">Completely Eliminated</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Driver Satisfaction</strong></td>
+                        <td>Low</td>
+                        <td><span class="highlight">High</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Transparency</strong></td>
+                        <td>Limited</td>
+                        <td><span class="highlight">Complete Transparency</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Innovation</strong></td>
+                        <td>Incremental</td>
+                        <td><span class="highlight">Revolutionary</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="features-list" style="margin-top: 40px;">
+                <div class="feature-card">
+                    <h4>🎯 Target Market:</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin: 10px 0; padding-left: 25px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #f59e0b;">★</span>
+                            <strong>Primary:</strong> Urban professionals, college students
+                        </li>
+                        <li style="margin: 10px 0; padding-left: 25px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #f59e0b;">★</span>
+                            <strong>Secondary:</strong> Daily commuters, occasional travelers
+                        </li>
+                        <li style="margin: 10px 0; padding-left: 25px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #f59e0b;">★</span>
+                            <strong>Geographic:</strong> Tier 1 & 2 Indian cities initially
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h4>🚀 Unique Selling Points:</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin: 10px 0; padding-left: 25px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #8b5cf6;">▲</span>
+                            First-Mover Advantage in bidding
+                        </li>
+                        <li style="margin: 10px 0; padding-left: 25px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #8b5cf6;">▲</span>
+                            Market-driven fair pricing
+                        </li>
+                        <li style="margin: 10px 0; padding-left: 25px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #8b5cf6;">▲</span>
+                            Zero cancellation guarantee
+                        </li>
+                        <li style="margin: 10px 0; padding-left: 25px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #8b5cf6;">▲</span>
+                            Cost-efficient technology stack
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Implementation Roadmap -->
+        <div class="slide">
+            <div class="slide-number">7/8</div>
+            <h2>Implementation Roadmap</h2>
+            <h3 style="text-align: center; margin-bottom: 40px;">12-Week Development Plan</h3>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h4>Phase 1: Foundation</h4>
+                    <p><strong>Weeks 1-4</strong></p>
+                    <ul style="text-align: left; margin-top: 15px;">
+                        <li>✅ User authentication & profiles</li>
+                        <li>✅ Basic bidding system implementation</li>
+                        <li>✅ Free maps integration (OpenStreetMap)</li>
+                        <li>✅ Core mobile app development</li>
+                    </ul>
+                </div>
+                
+                <div class="timeline-item">
+                    <h4>Phase 2: Enhancement</h4>
+                    <p><strong>Weeks 5-8</strong></p>
+                    <ul style="text-align: left; margin-top: 15px;">
+                        <li>✅ Advanced bidding interface</li>
+                        <li>✅ Real-time tracking & distance calculation</li>
+                        <li>✅ Payment gateway integration</li>
+                        <li>✅ Rating & review system</li>
+                    </ul>
+                </div>
+                
+                <div class="timeline-item">
+                    <h4>Phase 3: Polish</h4>
+                    <p><strong>Weeks 9-12</strong></p>
+                    <ul style="text-align: left; margin-top: 15px;">
+                        <li>✅ Performance optimization</li>
+                        <li>✅ Security implementation</li>
+                        <li>✅ User testing & feedback</li>
+                        <li>✅ Launch preparation</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="feature-card" style="margin-top: 40px;">
+                <h4>🛠️ Technical Resources:</h4>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 20px;">
+                    <div>
+                        <h5 style="color: #3b82f6; margin-bottom: 10px;">APIs & Services</h5>
+                        <ul style="list-style: none; padding: 0;">
+                            <li>• OpenStreetMap (Free)</li>
+                            <li>• OpenRouteService</li>
+                            <li>• Socket.io for real-time</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h5 style="color: #3b82f6; margin-bottom: 10px;">Technology Stack</h5>
+                        <ul style="list-style: none; padding: 0;">
+                            <li>• React Native/Flutter</li>
+                            <li>• Node.js Backend</li>
+                            <li>• MongoDB Database</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h5 style="color: #3b82f6; margin-bottom: 10px;">Deployment</h5>
+                        <ul style="list-style: none; padding: 0;">
+                            <li>• Cloud hosting with CDN</li>
+                            <li>• Comprehensive QA testing</li>
+                            <li>• Scalable architecture</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Future Expansion -->
+        <div class="slide">
+            <div class="slide-number">8/9</div>
+            <h2>Future Expansion</h2>
+            <img src="pics/2.png" alt="" style="width: 350px; margin: auto;" >
+            
+            <div class="image-gallery">
+                
+                <div class="image-card">
+                    <img src="pics/Towing.jpeg" alt="Auto Rickshaw Driver" style="height: 500px;">
+                    <h4>Towing Services</h4>
+                    <p>On-demand vehicle towing for stranded drivers, breakdowns, and emergency roadside needs — powered by a fair pricing system and nearby tow partner dispatch for rapid response.</p>
+                </div>
+                
+                <div class="image-card">
+                    <img src="pics/mechCOnnect.png" alt="Cab Driver" style="height: 500px;">
+                    <h4>Mechanic Connect</h4>
+                    <p>Instantly connect with verified nearby mechanics for on-site vehicle repairs, inspections, and servicing — with transparent pricing and real-time availability.</p>
+                </div>
+                
+            </div>
+        </div>
+
+        <!-- Slide 9: Impact & Call to Action -->
+        <div class="slide">
+            <div class="slide-number">8/8</div>
+            <h2>Impact & Call to Action</h2>
+            <h3 style="text-align: center; margin-bottom: 40px;">Transform Transportation Together</h3>
+            
+            <div class="features-list">
+                <div class="feature-card">
+                    <h4>🌟 Expected Impact:</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin: 15px 0; padding-left: 25px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #10b981;">🌍</span>
+                            <strong>For Society:</strong> Reduced transportation costs, fair wages for drivers
+                        </li>
+                        <li style="margin: 15px 0; padding-left: 25px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #3b82f6;">👥</span>
+                            <strong>For Users:</strong> Transparent pricing, reliable service, zero cancellations
+                        </li>
+                        <li style="margin: 15px 0; padding-left: 25px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #8b5cf6;">🚀</span>
+                            <strong>For Innovation:</strong> Pioneer in competitive ride-hailing space
+                        </li>
+                        <li style="margin: 15px 0; padding-left: 25px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #f59e0b;">🎓</span>
+                            <strong>For Education:</strong> Real-world application of cutting-edge technology
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h4>📈 Success Metrics:</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin: 15px 0; padding-left: 25px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #10b981;">✓</span>
+                            <strong>User Satisfaction:</strong> 95%+ successful ride completions
+                        </li>
+                        <li style="margin: 15px 0; padding-left: 25px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #3b82f6;">✓</span>
+                            <strong>Driver Retention:</strong> Higher earnings through fair pricing
+                        </li>
+                        <li style="margin: 15px 0; padding-left: 25px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #8b5cf6;">✓</span>
+                            <strong>Market Disruption:</strong> First mover in bidding-based transportation
+                        </li>
+                        <li style="margin: 15px 0; padding-left: 25px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #f59e0b;">✓</span>
+                            <strong>Social Impact:</strong> Empowering drivers with pricing control
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="cta-section">
+                <h3 style="color: white; margin-bottom: 20px;">🎯 Why Support This Project:</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 30px 0; text-align: left;">
+                    <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px;">
+                        <h4 style="color: #fbbf24; margin-bottom: 10px;">1. Solves Real Problems</h4>
+                        <p style="color: #e5e7eb; margin: 0;">Addresses genuine market pain points with innovative solutions</p>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px;">
+                        <h4 style="color: #fbbf24; margin-bottom: 10px;">2. Technical Innovation</h4>
+                        <p style="color: #e5e7eb; margin: 0;">Cutting-edge implementation with modern tech stack</p>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px;">
+                        <h4 style="color: #fbbf24; margin-bottom: 10px;">3. Social Good</h4>
+                        <p style="color: #e5e7eb; margin: 0;">Creates fairer transportation ecosystem for all</p>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px;">
+                        <h4 style="color: #fbbf24; margin-bottom: 10px;">4. Educational Value</h4>
+                        <p style="color: #e5e7eb; margin: 0;">Hands-on learning with real market impact</p>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px;">
+                        <h4 style="color: #fbbf24; margin-bottom: 10px;">5. Scalable Solution</h4>
+                        <p style="color: #e5e7eb; margin: 0;">Potential for national and international expansion</p>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 40px; padding-top: 30px; border-top: 2px solid rgba(255,255,255,0.2);">
+                    <h3 style="color: #fbbf24; margin-bottom: 20px;">💡 "Let's build the future of fair transportation"</h3>
+                    <p style="color: #e5e7eb; font-size: 1.2rem; margin-bottom: 20px;">
+                        Where technology serves everyone equally
+                    </p>
+                    <button class="cta-button" onclick="window.open('https://silly-tulumba-c26579.netlify.app/', '_blank')">
+                        View Live Prototype
+                    </button>
+                </div>
+            </div>
+            
+            <div style="background: #f8fafc; padding: 30px; border-radius: 15px; margin-top: 40px; text-align: center;">
+                <h4 style="color: #1e40af; margin-bottom: 20px;">📞 Ready to Transform Transportation?</h4>
+                <p style="color: #4b5563; font-size: 1.1rem; margin-bottom: 20px;">
+                    Seeking approval to begin development and create a solution that benefits millions of users while showcasing technical excellence.
+                </p>
+                <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-top: 30px;">
+                    <div style="text-align: center;">
+                        <h5 style="color: #3b82f6; margin-bottom: 10px;">Next Steps</h5>
+                        <p style="color: #6b7280; margin: 0;">Technical Development</p>
+                        <p style="color: #6b7280; margin: 0;">Market Validation</p>
+                        <p style="color: #6b7280; margin: 0;">User Testing</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <h5 style="color: #3b82f6; margin-bottom: 10px;">Timeline</h5>
+                        <p style="color: #6b7280; margin: 0;">12 Weeks Development</p>
+                        <p style="color: #6b7280; margin: 0;">Prototype Ready</p>
+                        <p style="color: #6b7280; margin: 0;">Launch Preparation</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <h5 style="color: #3b82f6; margin-bottom: 10px;">Impact</h5>
+                        <p style="color: #6b7280; margin: 0;">Fair Transportation</p>
+                        <p style="color: #6b7280; margin: 0;">Happy Drivers</p>
+                        <p style="color: #6b7280; margin: 0;">Satisfied Users</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Navigation -->
+        <div style="position: fixed; bottom: 30px; right: 30px; z-index: 1000;">
+            <button onclick="window.scrollTo(0, 0)" style="background: linear-gradient(135deg, #3b82f6, #1e40af); color: white; border: none; padding: 15px 20px; border-radius: 50px; cursor: pointer; font-weight: 600; box-shadow: 0 10px 25px rgba(0,0,0,0.2); transition: transform 0.3s ease;">
+                ↑ Back to Top
+            </button>
+        </div>
+        
+        <!-- Footer -->
+        <div style="text-align: center; padding: 40px; color: white; background: rgba(0,0,0,0.1); border-radius: 20px; margin-top: 40px;">
+            <h3 style="color: white; margin-bottom: 20px;">Thank You for Your Attention</h3>
+            <p style="color: #e5e7eb; font-size: 1.2rem; font-style: italic;">
+                "Innovation happens when we solve real problems with cutting-edge technology"
+            </p>
+            <div style="margin-top: 30px; padding-top: 20px; border-top: 2px solid rgba(255,255,255,0.2);">
+                <p style="color: #cbd5e1; margin: 0;">Ready to revolutionize transportation together</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Smooth scrolling for navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add smooth scrolling behavior
+            document.documentElement.style.scrollBehavior = 'smooth';
+            
+            // Add slide-in animation
+            const slides = document.querySelectorAll('.slide');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            slides.forEach(slide => {
+                slide.style.opacity = '0';
+                slide.style.transform = 'translateY(50px)';
+                slide.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(slide);
+            });
+        });
+        
+        // Add hover effects to cards
+        document.querySelectorAll('.feature-card, .stat-card, .image-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
